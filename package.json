@@ -18,6 +18,7 @@
   "homepage": "https://github.com/FernandoAgostini28/formNode#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "sqlite3": "^5.0.2"
   }
 }
