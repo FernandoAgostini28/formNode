@@ -1,0 +1,19 @@
+{
+  "name": "back-form-node",
+  "version": "1.0.0",
+  "description": "form back node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FernandoAgostini28/formNode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FernandoAgostini28/formNode/issues"
+  },
+  "homepage": "https://github.com/FernandoAgostini28/formNode#readme"
+}
