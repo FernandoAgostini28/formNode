@@ -5,7 +5,6 @@ class FornecedorDAO {
     select_all_fornecedores() {
         return new Promise((resolve, reject) => {
             this._bdFornecedor.all('SELECT * FROM FORNECEDOR', (err, linhas) => {
-                console.log('deu')
                 if (err) {
                     reject(({ "mensagem": err.message, "error": true }))
                 } else {
@@ -19,7 +18,6 @@ class FornecedorDAO {
         })
     }
     insert_fornecedor(novoFornecedor) {
-        console.log(novoFornecedor)
         return new Promise((resolve, reject) => {
             this._bdFornecedor.run(`
             INSERT INTO FORNECEDOR (NOME, RAZAO_SOCIAL, CNPJ, SEGMENTO, CEP, RUA, NUMERO, COMPLEMENTO, TELEFONE, EMAIL)
@@ -73,6 +71,28 @@ class FornecedorDAO {
                     resolve({
                         "fornecedores": novoFornecedor,
                         "message":  "alterado com sucesso!",
+                        "erro": false
+                    })
+                }
+            })
+        })
+    }
+
+    remove_fornecedor(id) {
+        return new Promise((resolve, reject) => {
+            this._bdFornecedor.run(`
+            DELETE FROM FORNECEDOR 
+           where ID =
+           ${id}
+            `, (error) => {
+                if (error) {
+                    reject({
+                        "fornecedor": error.message,
+                        "erro": true
+                    })
+                } else {
+                    resolve({
+                        "message": "fornecedor removido com sucesso!",
                         "erro": false
                     })
                 }
