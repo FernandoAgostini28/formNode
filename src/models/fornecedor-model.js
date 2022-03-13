@@ -1,7 +1,7 @@
 class FornecedorNovo {
     
     constructor(nome, razaoSocial, cnpj, segmento, cep, rua, numero, complemento, telefone, email) {
-        console.log(cep)
+        console.log(nome, razaoSocial, cnpj, segmento, cep, rua, numero, complemento, telefone, email)
         this.nome = this.verificaVazioNome(nome)
         this.razaoSocial = this.verificaVazioRazaoSocial(razaoSocial)
         this.cnpj= this.verificaVazioCnpj(cnpj)
@@ -16,7 +16,8 @@ class FornecedorNovo {
     }
 
     verificaVazioNome(nome){
-        if(!!nome){
+        console.log(!!nome)
+        if(!!nome === false){
             return  'error'
         }else {
             return nome  
@@ -24,15 +25,15 @@ class FornecedorNovo {
         }
     }
     verificaVazioRazaoSocial(razaoSocial){
-        if(!!razaoSocial){
-            return 'vazio'
+        if(!!razaoSocial === false){
+            return 'error'
         }else {
             return razaoSocial  
           
         }
     }
     verificaVazioCnpj(cnpj){
-        if(!!cnpj){
+        if(!!cnpj === false){
             return 'error'
         }else {
             return cnpj  
@@ -40,7 +41,7 @@ class FornecedorNovo {
         }
     }
     verificaVazioNumero(numero){
-        if(!!numero){
+        if(!!numero === false){
             return 'error'
         }else {
             return numero  
@@ -50,7 +51,7 @@ class FornecedorNovo {
     }
 
     verificaVazioSegmento(segmento){
-        if(!!segmento){
+        if(!!segmento === false){
             return 'error'
         }else {
             return segmento  
@@ -60,7 +61,7 @@ class FornecedorNovo {
     }
 
     verificaVazioTelefone(telefone){
-        if(!!telefone){
+        if(!!telefone === false){
             return 'error'
         }else {
             return telefone  
@@ -69,7 +70,7 @@ class FornecedorNovo {
 
     }
     verificaVazioComplemento(complemento){
-        if(!!complemento){
+        if(!!complemento === false){
             return 'error'
         }else {
             return complemento  
@@ -79,7 +80,7 @@ class FornecedorNovo {
     }
     verificaVazioCep(cep) {
         console.log(cep)
-        if(!!cep){
+        if(!!cep === false){
             return 'error'
         }else {
             return cep  
@@ -88,7 +89,7 @@ class FornecedorNovo {
 
     }
     verificaVazioEmail(email){
-        if(!!email){
+        if(!!email === false){
             return 'error'
         }else {
             return email  

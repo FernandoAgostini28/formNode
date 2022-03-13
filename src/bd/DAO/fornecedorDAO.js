@@ -42,14 +42,38 @@ class FornecedorDAO {
     }
     select_fornecedor_id(id){
         return new Promise((resolve, reject) => {
-            this._bdCaixa.all(`SELECT * FROM CAIXA where ID = ${id}`, (err, linhas) => {
+            this._bdFornecedor.all(`SELECT * FROM FORNECEDOR where ID = ${id}`, (err, linhas) => {
                 if (err) {
                     reject(({ "mensagem": err.message, "error": true }))
                 } else {
                     resolve({
-                        "pedidos": linhas,
+                        "fornecedores": linhas,
                         "count": linhas.length,
                         "error": false
+                    })
+                }
+            })
+        })
+    }
+
+    update_fornecedor(id, novoFornecedor) {
+        return new Promise((resolve, reject) => {
+            this._bdFornecedor.run(`
+            UPDATE FORNECEDOR SET (NOME, RAZAO_SOCIAL, CNPJ, SEGMENTO, CEP, RUA, NUMERO, COMPLEMENTO, TELEFONE, EMAIL) =
+            (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            where ID =
+           "${id}"
+            `, [novoFornecedor.nome, novoFornecedor.razaoSocial, novoFornecedor.cnpj, novoFornecedor.segmento, novoFornecedor.cep, novoFornecedor.rua, novoFornecedor.numero, novoFornecedor.complemento, novoFornecedor.telefone, novoFornecedor.email ], (error) => {
+                if (error) {
+                    reject({
+                        "fornecedores": error.message,
+                        "erro": true
+                    })
+                } else {
+                    resolve({
+                        "fornecedores": novoFornecedor,
+                        "message":  "alterado com sucesso!",
+                        "erro": false
                     })
                 }
             })
