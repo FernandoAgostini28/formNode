@@ -4,6 +4,7 @@
   "description": "form back node",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/FernandoAgostini28/formNode/issues"
   },
-  "homepage": "https://github.com/FernandoAgostini28/formNode#readme"
+  "homepage": "https://github.com/FernandoAgostini28/formNode#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "sqlite3": "^5.0.2"
+  }
 }
