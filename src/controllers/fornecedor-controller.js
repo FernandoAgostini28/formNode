@@ -48,7 +48,7 @@ const fornecedor = (app, bdFornecedor) => {
 
     })
 
-    app.put('/fornecedores/editar:id', async (req, res) => {
+    app.put('/fornecedores/editar/:id', async (req, res) => {
         const idFornecedor = req.params.id
         const body = req.body
         try {
@@ -75,7 +75,7 @@ const fornecedor = (app, bdFornecedor) => {
 
     })
 
-    app.delete('/fornecedores/deletar:id', async (req, res) => {
+    app.delete('/fornecedores/deletar/:id', async (req, res) => {
         const idFornecedor = req.params.id
         try {
             const respFornecedorid = await fornecedor_DAO.select_fornecedor_id(idFornecedor);
