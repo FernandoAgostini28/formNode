@@ -32,16 +32,32 @@ const fornecedor = (app, bdFornecedor) => {
         }
     })
 
-    app.put('/fornecedores/:id', async (req, res) => {
+    app.get('/fornecedores/:id', async (req, res) => {
+        const idFornecedor = req.params.id
+        try {
+            const respFornecedorid = await fornecedor_DAO.select_fornecedor_id(idFornecedor);
+            if (respFornecedorid.count >= 1) {
+                res.status(200).json(respFornecedorid)
+            } else {
+                res.status(422).json({ message: 'id não localizado' })
+            }
+
+        } catch (error) {
+            res.status(404).json({ error })
+        }
+
+    })
+
+    app.put('/fornecedores/editar:id', async (req, res) => {
         const idFornecedor = req.params.id
         const body = req.body
         try {
-            
+
             const respFornecedorid = await fornecedor_DAO.select_fornecedor_id(idFornecedor);
             if (respFornecedorid.count >= 1) {
 
-                const editarFornecedor= new FornecedorNew(body.NOME, body.RAZAO_SOCIAL, body.CNPJ, body.SEGMENTO, body.CEP, body.RUA, body.NUMERO, body.COMPLEMENTO, body.TELEFONE, body.EMAIL)
-                
+                const editarFornecedor = new FornecedorNew(body.NOME, body.RAZAO_SOCIAL, body.CNPJ, body.SEGMENTO, body.CEP, body.RUA, body.NUMERO, body.COMPLEMENTO, body.TELEFONE, body.EMAIL)
+
                 if (editarFornecedor.nome === 'error' || editarFornecedor.razaoSocial === 'error', editarFornecedor.cnpj, editarFornecedor.cep === 'error', editarFornecedor.segmento === 'error', editarFornecedor.numero === 'error', editarFornecedor.email === 'error', editarFornecedor.complemento === 'error') {
                     res.status(422).json({ message: `erro ao editar fornecedor` })
                 } else {
@@ -59,15 +75,15 @@ const fornecedor = (app, bdFornecedor) => {
 
     })
 
-    app.delete('/fornecedores/:id', async (req, res) => {
+    app.delete('/fornecedores/deletar:id', async (req, res) => {
         const idFornecedor = req.params.id
         try {
             const respFornecedorid = await fornecedor_DAO.select_fornecedor_id(idFornecedor);
             if (respFornecedorid.count >= 1) {
                 const removeFornecedor = await fornecedor_DAO.remove_fornecedor(idFornecedor);
                 res.status(200).json(removeFornecedor)
-            }else{
-                res.status(422).json({ message: 'id não localizado'})
+            } else {
+                res.status(422).json({ message: 'id não localizado' })
             }
         } catch (error) {
             res.status(404).json({ error })
