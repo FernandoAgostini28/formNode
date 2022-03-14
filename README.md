@@ -1,5 +1,10 @@
 # Projeto Back Fornecedores
 
+Instalar dependências
+### nodejs (preferencialmente Versão LTS + atual)
+
+### `npm install`
+
 ## Available Scripts
 
 In the project directory, you can run:
